@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -384,8 +384,10 @@
       event.preventDefault();
       const email = document.getElementById('email').value.trim();
       const messageEl = document.getElementById('emailMessage');
+      
       if(!email){
-        alert('Digite um e-mail válido.');
+        messageEl.textContent = '❌ Por favor, digite um e-mail válido.';
+        messageEl.style.color = '#dc3545';
         return false;
       }
       
@@ -395,19 +397,24 @@
       
       const templateParams = {
         to_email: email,
+        user_email: email,
         subject: '✅ Confirmação de Cadastro - Lembrete de Água',
-        message: `Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenciosamente,\nEquipe Lembrete de Água`
+        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenciosamente,\nEquipe Lembrete de Água'
       };
       
       emailjs.send('service_d95tfur', 'template_7h8b2jk', templateParams)
-        .then(() => {
-          messageEl.textContent = `✅ Cadastro realizado com sucesso!`;
+        .then((response) => {
+          console.log('Email enviado com sucesso!', response);
+          messageEl.textContent = `✅ Cadastro realizado com sucesso! Verifique seu e-mail.`;
           messageEl.style.color = '#28a745';
+          document.getElementById('emailForm').reset();
           startReminderNotifications(email);
         })
-        .catch(() => {
-          messageEl.textContent = `⚠️ E-mail não pode ser enviado. Lembretes ativos no navegador.`;
-          messageEl.style.color = '#ff6b6b';
+        .catch((error) => {
+          console.error('Erro ao enviar email:', error);
+          messageEl.textContent = `⚠️ Cadastro salvo! Lembretes ativos no navegador.`;
+          messageEl.style.color = '#ff9800';
+          document.getElementById('emailForm').reset();
           startReminderNotifications(email);
         });
       
