@@ -40,6 +40,8 @@
       border-radius:20px;
       text-align:center;
       box-shadow:0 0 20px rgba(0,0,0,0.3);
+      margin:20px;
+      max-width: calc(100% - 40px);
     }
 
     .topo-imagem img{
@@ -126,9 +128,8 @@
 
     .motivacao{
       margin-top:20px;
-      font: size 20px;
+      font-size: 20px;
       color:#003081;
-    
       font-weight:bold;
     }
 
@@ -234,6 +235,245 @@
     .nav-buttons button:hover{
       background:#003081;
       color:white;
+    }
+
+    /* RESPONSIVIDADE PARA TABLETS */
+    @media (max-width: 768px) {
+      
+      .container{
+        width: calc(100% - 40px);
+        padding: 25px;
+        margin: 15px;
+        border-radius: 15px;
+      }
+
+      body {
+        font-size: 16px;
+      }
+
+      h2, h3 {
+        font-size: 20px;
+      }
+
+      .nav-buttons {
+        top: 15px;
+        gap: 6px;
+        padding: 4px;
+      }
+
+      .nav-buttons button {
+        padding: 6px 10px;
+        font-size: 13px;
+        border-radius: 6px;
+      }
+
+      input, select {
+        font-size: 16px;
+        padding: 12px 14px;
+      }
+
+      button {
+        padding: 12px 16px;
+        font-size: 15px;
+      }
+
+      .dicas, .importancia, .cadastro-email, .meta-section {
+        padding: 15px 16px;
+        margin-top: 15px;
+      }
+
+      ul {
+        padding-left: 18px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+    }
+
+    /* RESPONSIVIDADE PARA CELULARES PEQUENOS (até 576px) */
+    @media (max-width: 576px) {
+
+      body {
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .topo-imagem {
+        margin-bottom: 0;
+      }
+
+      .container {
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
+      }
+
+      h1, h2, h3 {
+        font-size: 18px;
+        margin: 15px 0 10px 0;
+      }
+
+      .nav-buttons {
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 4px;
+        padding: 4px;
+        background: rgba(255,255,255,0.9);
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 95%;
+        max-width: 100%;
+      }
+
+      .nav-buttons button {
+        width: auto;
+        padding: 6px 8px;
+        font-size: 11px;
+        border-radius: 6px;
+        border: 1.5px solid #003081;
+      }
+
+      .nav-buttons button:hover {
+        background: #003081;
+        color: white;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 12px 14px;
+        margin-top: 8px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+
+      label {
+        font-size: 14px;
+        margin-top: 12px;
+      }
+
+      button, .btn-primary, button[type="submit"] {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+        margin-top: 12px;
+        border-radius: 10px;
+      }
+
+      .dicas, .importancia, .cadastro-email, .meta-section {
+        padding: 14px 15px;
+        margin-top: 12px;
+        border-radius: 12px;
+        background: #f5f9ff;
+      }
+
+      .meta-section {
+        background: #ffffff;
+      }
+
+      ul {
+        padding-left: 16px;
+        margin: 8px 0 0 0;
+      }
+
+      li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .resultado {
+        font-size: 18px;
+        margin-top: 15px;
+      }
+
+      .copos {
+        font-size: 16px;
+        margin-top: 12px;
+      }
+
+      .motivacao {
+        font-size: 16px;
+        margin-top: 15px;
+      }
+
+      .barra {
+        height: 28px;
+        margin-top: 15px;
+      }
+
+      .progresso {
+        line-height: 28px;
+        font-size: 12px;
+      }
+
+      #sobre {
+        font-size: 14px;
+      }
+
+      .sobre-nos p {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      input[type="email"], input[type="number"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      /* Garante boa legibilidade no mobile */
+      #emailMessage {
+        font-size: 13px !important;
+        margin-top: 12px !important;
+      }
+    }
+
+    /* RESPONSIVIDADE PARA CELULARES MUITO PEQUENOS (até 360px) */
+    @media (max-width: 360px) {
+
+      .container {
+        padding: 16px;
+      }
+
+      h1, h2, h3 {
+        font-size: 16px;
+      }
+
+      .nav-buttons {
+        top: 10px;
+      }
+
+      .nav-buttons button {
+        padding: 5px 7px;
+        font-size: 10px;
+      }
+
+      input, select, button {
+        font-size: 15px;
+      }
+
+      label {
+        font-size: 13px;
+      }
+
+      ul {
+        padding-left: 14px;
+      }
+
+      li {
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+
+      .resultado, .copos, .motivacao {
+        font-size: 15px;
+      }
     }
 
   </style>
@@ -399,7 +639,7 @@
         to_email: email,
         user_email: email,
         subject: '✅ Confirmação de Cadastro - Lembrete de Água',
-        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenciosamente,\nEquipe Lembrete de Água'
+        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenc[...]
       };
       
       emailjs.send('service_d95tfur', 'template_7h8b2jk', templateParams)
@@ -443,7 +683,7 @@
       if(Notification.permission === 'granted'){
         new Notification('💧 Lembrete de Água', {
           body: message,
-          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70 65 55 Q65 40 50 20" fill="%23ffffff"/></svg>'
+          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]
         });
       }
     }
@@ -556,7 +796,7 @@
 
   </script>
 
-      
+       
 </body>
 
 </html>
