@@ -205,6 +205,17 @@
       margin-bottom:10px;
     }
 
+    /* caixa branca atrás do título principal */
+    .titulo-lembrete {
+      background: #ffffff !important;
+      color: #003081 !important;
+      padding: 8px 12px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      margin-bottom: 10px;
+    }
+
     /* Navegação sobre a imagem */
     .nav-buttons{
       position:absolute;
@@ -318,17 +329,6 @@
         box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
         background: #003081;
         color: #ffffff;
-      }
-
-      /* caixa branca atrás do título principal */
-      .titulo-lembrete {
-        background: #ffffff;
-        color: #003081;
-        padding: 8px 12px;
-        border-radius: 10px;
-        display: inline-block;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-        margin-bottom: 10px;
       }
 
       h1, h2, h3 {
@@ -659,7 +659,7 @@
         to_email: email,
         user_email: email,
         subject: '✅ Confirmação de Cadastro - Lembrete de Água',
-        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenc[...]'
+        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenc[...]
       };
       
       emailjs.send('service_d95tfur', 'template_7h8b2jk', templateParams)
@@ -703,7 +703,7 @@
       if(Notification.permission === 'granted'){
         new Notification('💧 Lembrete de Água', {
           body: message,
-          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]'
+          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]
         });
       }
     }
