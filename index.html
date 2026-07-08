@@ -316,6 +316,19 @@
         margin: 0;
         border-radius: 15px 15px 0 0;
         box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
+        background: #003081;
+        color: #ffffff;
+      }
+
+      /* caixa branca atrás do título principal */
+      .titulo-lembrete {
+        background: #ffffff;
+        color: #003081;
+        padding: 8px 12px;
+        border-radius: 10px;
+        display: inline-block;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        margin-bottom: 10px;
       }
 
       h1, h2, h3 {
@@ -505,7 +518,7 @@
 
   <div class="container">
 
-    <h2>💧 Lembrete de Água</h2>
+    <h2 class="titulo-lembrete">💧 Lembrete de Água</h2>
 
    
     <div id="sobre" class="sobre-nos" style="margin-top:10px; text-align:left; background:#f5f9ff; padding:15px; border-radius:15px;">
@@ -690,7 +703,7 @@
       if(Notification.permission === 'granted'){
         new Notification('💧 Lembrete de Água', {
           body: message,
-          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]'/>
+          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]'
         });
       }
     }
