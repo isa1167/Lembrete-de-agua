@@ -271,6 +271,7 @@
       }
 
       .nav-buttons {
+        /* subir os botões para ficarem acima da imagem em telas menores */
         top: -8px;
         gap: 6px;
         padding: 4px;
@@ -327,79 +328,17 @@
         margin: 0;
         border-radius: 15px 15px 0 0;
         box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
+        background: #003081;
+        color: #ffffff;
       }
 
       h1, h2, h3 {
         font-size: 18px;
         margin: 15px 0 10px 0;
-        background: white;
-        padding: 10px 12px;
-        border-radius: 8px;
-        display: inline-block;
-        color: #003081;
-      }
-
-      .titulo-lembrete {
-        background: white !important;
-        color: #003081 !important;
-        padding: 10px 14px;
-        border-radius: 10px;
-        display: inline-block;
-        font-size: 20px;
-        margin-bottom: 15px;
-      }
-
-      label {
-        background: white;
-        padding: 8px 10px;
-        border-radius: 6px;
-        display: block;
-        color: #222;
-        font-size: 14px;
-        margin-top: 12px;
-      }
-
-      .resultado {
-        background: white;
-        padding: 12px 15px;
-        border-radius: 8px;
-        display: inline-block;
-        color: #333;
-        font-size: 16px;
-        margin-top: 15px;
-      }
-
-      .copos {
-        background: white;
-        padding: 10px 15px;
-        border-radius: 8px;
-        display: inline-block;
-        color: #333;
-        font-size: 15px;
-        margin-top: 12px;
-      }
-
-      .motivacao {
-        background: white;
-        padding: 12px 16px;
-        border-radius: 8px;
-        display: inline-block;
-        color: #003081;
-        font-size: 15px;
-        margin-top: 15px;
-      }
-
-      #emailMessage {
-        background: white !important;
-        padding: 10px 12px !important;
-        border-radius: 6px !important;
-        display: inline-block !important;
-        font-size: 13px !important;
-        margin-top: 12px !important;
-        color: #004085 !important;
       }
 
       .nav-buttons {
+        /* subir ainda mais nos celulares pequenos */
         top: -16px;
         left: 50%;
         transform: translateX(-50%);
@@ -434,6 +373,11 @@
         border-radius: 10px;
       }
 
+      label {
+        font-size: 14px;
+        margin-top: 12px;
+      }
+
       button, .btn-primary, button[type="submit"] {
         width: 100%;
         padding: 12px 16px;
@@ -464,6 +408,21 @@
         line-height: 1.5;
       }
 
+      .resultado {
+        font-size: 18px;
+        margin-top: 15px;
+      }
+
+      .copos {
+        font-size: 16px;
+        margin-top: 12px;
+      }
+
+      .motivacao {
+        font-size: 16px;
+        margin-top: 15px;
+      }
+
       .barra {
         height: 28px;
         margin-top: 15px;
@@ -488,6 +447,12 @@
         -moz-appearance: none;
         appearance: none;
       }
+
+      /* Garante boa legibilidade no mobile */
+      #emailMessage {
+        font-size: 13px !important;
+        margin-top: 12px !important;
+      }
     }
 
     /* RESPONSIVIDADE PARA CELULARES MUITO PEQUENOS (até 360px) */
@@ -499,16 +464,10 @@
 
       h1, h2, h3 {
         font-size: 16px;
-        padding: 8px 10px;
-      }
-
-      .titulo-lembrete {
-        font-size: 18px;
-        padding: 8px 10px;
       }
 
       .nav-buttons {
-        top: -20px;
+        top: -20px; /* subir mais para não cobrir a imagem */
       }
 
       .nav-buttons button {
@@ -516,13 +475,12 @@
         font-size: 10px;
       }
 
-      label {
-        font-size: 13px;
-        padding: 6px 8px;
-      }
-
       input, select, button {
         font-size: 15px;
+      }
+
+      label {
+        font-size: 13px;
       }
 
       ul {
@@ -535,13 +493,7 @@
       }
 
       .resultado, .copos, .motivacao {
-        font-size: 14px;
-        padding: 8px 10px;
-      }
-
-      #emailMessage {
-        font-size: 12px !important;
-        padding: 8px 10px !important;
+        font-size: 15px;
       }
     }
 
