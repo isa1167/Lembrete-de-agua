@@ -51,6 +51,8 @@
       border-radius:0;
       border:0;
       display:block;
+      position: relative;
+      z-index: 1; /* garante que a imagem fique atrás dos botões */
     }
 
     h1,h2,h3{
@@ -217,8 +219,9 @@
       background:rgba(255,255,255,0.85);
       padding:6px;
       border-radius:12px;
-      z-index:5;
+      z-index:50; /* aumentei para garantir clique sobre a imagem */
       box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      pointer-events:auto;
     }
 
     .nav-buttons button{
@@ -256,9 +259,11 @@
       }
 
       .nav-buttons {
-        top: 15px;
+        /* subir os botões para ficarem acima da imagem em telas menores */
+        top: -8px;
         gap: 6px;
         padding: 4px;
+        z-index: 60;
       }
 
       .nav-buttons button {
@@ -319,16 +324,18 @@
       }
 
       .nav-buttons {
-        top: 12px;
+        /* subir ainda mais nos celulares pequenos */
+        top: -16px;
         left: 50%;
         transform: translateX(-50%);
         gap: 4px;
         padding: 4px;
-        background: rgba(255,255,255,0.9);
+        background: rgba(255,255,255,0.95);
         flex-direction: row;
         flex-wrap: wrap;
         width: 95%;
         max-width: 100%;
+        z-index: 70;
       }
 
       .nav-buttons button {
@@ -446,7 +453,7 @@
       }
 
       .nav-buttons {
-        top: 10px;
+        top: -20px; /* subir mais para não cobrir a imagem */
       }
 
       .nav-buttons button {
@@ -639,7 +646,7 @@
         to_email: email,
         user_email: email,
         subject: '✅ Confirmação de Cadastro - Lembrete de Água',
-        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenc[...]
+        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenc[...]'
       };
       
       emailjs.send('service_d95tfur', 'template_7h8b2jk', templateParams)
@@ -683,7 +690,7 @@
       if(Notification.permission === 'granted'){
         new Notification('💧 Lembrete de Água', {
           body: message,
-          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]
+          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]'/>
         });
       }
     }
