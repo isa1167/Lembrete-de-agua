@@ -42,6 +42,8 @@
       box-shadow:0 0 20px rgba(0,0,0,0.3);
       margin:20px;
       max-width: calc(100% - 40px);
+      display: flex;
+      flex-direction: column;
     }
 
     .topo-imagem img{
@@ -330,6 +332,8 @@
         box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
         background: #003081;
         color: #ffffff;
+        display: flex;
+        flex-direction: column;
       }
 
       h1, h2, h3 {
@@ -460,6 +464,8 @@
 
       .container {
         padding: 16px;
+        display: flex;
+        flex-direction: column;
       }
 
       h1, h2, h3 {
@@ -494,6 +500,14 @@
 
       .resultado, .copos, .motivacao {
         font-size: 15px;
+      }
+    }
+
+    /* RESPONSIVIDADE PARA TELAS MAIORES (min-width: 768px) */
+    @media (min-width: 768px) {
+      .container {
+        display: flex;
+        flex-direction: row;
       }
     }
 
