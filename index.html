@@ -702,11 +702,20 @@
       messageEl.style.color = '#0066cc';
       
       const templateParams = {
-        to_email: email,
-        user_email: email,
-        subject: '✅ Confirmação de Cadastro - Lembrete de Água',
-        message: 'Olá!\n\nVocê se cadastrou com sucesso para receber notificações de água!\n\n💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.\n\nMantenha-se hidratado!\n\nAtenc[...]
-      };
+    to_email: email,
+    user_email: email,
+    subject: "✅ Confirmação de Cadastro - Lembrete de Água",
+    message: `Olá!
+
+Você se cadastrou com sucesso para receber notificações de água!
+
+💧 Você receberá lembretes a cada 2 horas entre 8h e 20h.
+
+Mantenha-se hidratado!
+
+Atenciosamente,
+Equipe Lembrete de Água`
+};
       
       emailjs.send('service_d95tfur', 'template_7h8b2jk', templateParams)
         .then((response) => {
