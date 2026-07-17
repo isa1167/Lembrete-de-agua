@@ -1,1 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Lembrete de Água</title>
+
+  <style>
+
+    body{
+      font-family: Arial, sans-serif;
+      font-size:18px;
+      line-height:1.6;
+      background :#003081;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      min-height:100vh;
+      margin:0;
+      padding:0;
+    }
+
+    .topo-imagem{
+      width:100%;
+      max-width:100%;
+      padding:0;
+      margin-bottom:0;
+      position:relative;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      background:white;
+      width:420px;
+      padding:30px;
+      border-radius:20px;
+      text-align:center;
+      box-shadow:0 0 20px rgba(0,0,0,0.3);
+      margin:20px;
+      max-width: calc(100% - 40px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topo-imagem img{
+      width:100%;
+      height:auto;
+      max-width:none;
+      border-radius:0;
+      border:0;
+      display:block;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1,h2,h3{
+      color:#003081;
+    }
+
+    label{
+      display:block;
+      text-align:left;
+      margin-top:15px;
+      font-weight:bold;
+      color:#333;
+    }
+
+    input,
+    select{
+      width:95%;
+      padding:12px;
+      margin-top:8px;
+      border-radius:10px;
+      border:1px solid #ccc;
+      font-size:16px;
+      box-sizing: border-box;
+    }
+
+    button{
+      background:#003081;
+      color:white;
+      border:none;
+      padding:12px 20px;
+      border-radius:10px;
+      cursor:pointer;
+      margin-top:15px;
+      font-size:16px;
+      transition:0.3s;
+      width: 100%;
+    }
+
+    button:hover{
+      background:#003081;
+    }
+
+    .resultado{
+      margin-top:20px;
+      font-size:20px;
+      color:#333;
+      font-weight:bold;
+    }
+
+    .barra{
+      width:100%;
+      height:30px;
+      background:#ddd;
+      border-radius:20px;
+      overflow:hidden;
+      margin-top:20px;
+    }
+
+    .progresso{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,#00c6ff,#0072ff);
+      transition:0.5s;
+      text-align:center;
+      color:white;
+      font-weight:bold;
+      line-height:30px;
+    }
+
+    .copos{
+      margin-top:15px;
+      font-size:20px;
+      color:#333;
+    }
+
+    .motivacao{
+      margin-top:20px;
+      font-size: 20px;
+      color:#003081;
+      font-weight:bold;
+    }
+
+    .dicas,
+    .importancia,
+    .cadastro-email,
+    .meta-section{
+      margin-top:20px;
+      text-align:left;
+      background:#f5f9ff;
+      padding: 18px 20px;
+      border-radius:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .meta-section{
+      display:none;
+      background:#ffffff;
+    }
+
+    .btn-primary,
+    .nav-buttons button,
+    button[type="submit"]{
+      width:100%;
+      max-width:100%;
+      padding:14px 20px;
+      border-radius:12px;
+      background:#003081;
+      color:#fff;
+      border:none;
+      cursor:pointer;
+      font-size:16px;
+      transition:background 0.25s ease;
+    }
+
+    .btn-primary:hover,
+    .nav-buttons button:hover,
+    button[type="submit"]:hover{
+      background:#001f5f;
+    }
+
+    label{
+      display:block;
+      margin-top:16px;
+      font-weight:700;
+      color:#222;
+    }
+
+    input,
+    select{
+      width:100%;
+      padding:14px 16px;
+      margin-top:8px;
+      border-radius:12px;
+      border:1px solid #c5d4f3;
+      font-size:16px;
+      box-sizing: border-box;
+      background:#fbfdff;
+    }
+
+    .section-card{
+      margin-top:16px;
+    }
+
+    ul{
+      padding-left:20px;
+      margin:12px 0 0 0;
+    }
+
+    li{
+      margin-bottom:10px;
+    }
+
+    /* caixa branca atrás do título principal */
+    .titulo-lembrete {
+      background: #ffffff !important;
+      color: #003081 !important;
+      padding: 8px 12px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      margin-bottom: 10px;
+    }
+
+    /* Navegação sobre a imagem */
+    .nav-buttons{
+      position:absolute;
+      top:24px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:8px;
+      margin:0;
+      background:rgba(255,255,255,0.85);
+      padding:6px;
+      border-radius:12px;
+      z-index:100;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      pointer-events:auto;
+    }
+
+    .nav-buttons button{
+      width:auto !important;
+      padding:8px 12px;
+      border-radius:8px;
+      background:transparent;
+      color:#003081;
+      border:2px solid #003081;
+      cursor:pointer;
+      font-weight:600;
+      pointer-events:auto;
+    }
+
+    .nav-buttons button:hover{
+      background:#003081;
+      color:white;
+    }
+
+    /* RESPONSIVIDADE PARA TABLETS */
+    @media (max-width: 768px) {
+      
+      .container{
+        width: calc(100% - 40px);
+        padding: 25px;
+        margin: 15px;
+        border-radius: 15px;
+      }
+
+      body {
+        font-size: 16px;
+      }
+
+      h2, h3 {
+        font-size: 20px;
+      }
+
+      .nav-buttons {
+        /* subir os botões para ficarem acima da imagem em telas menores */
+        top: -8px;
+        gap: 6px;
+        padding: 4px;
+        z-index: 100;
+      }
+
+      .nav-buttons button {
+        padding: 6px 10px;
+        font-size: 13px;
+        border-radius: 6px;
+      }
+
+      input, select {
+        font-size: 16px;
+        padding: 12px 14px;
+      }
+
+      button {
+        padding: 12px 16px;
+        font-size: 15px;
+      }
+
+      .dicas, .importancia, .cadastro-email, .meta-section {
+        padding: 15px 16px;
+        margin-top: 15px;
+      }
+
+      ul {
+        padding-left: 18px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+    }
+
+    /* RESPONSIVIDADE PARA CELULARES PEQUENOS (até 576px) */
+    @media (max-width: 576px) {
+
+      body {
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+      }
+
+      .topo-imagem {
+        margin-bottom: 0;
+      }
+
+      .container {
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+        border-radius: 15px 15px 0 0;
+        box-shadow: 0 -2px 15px rgba(0,0,0,0.2);
+        background: #003081;
+        color: #000000;
+        display: flex;
+        flex-direction: column;
+      }
+
+      h1, h2, h3 {
+        font-size: 18px;
+        margin: 15px 0 10px 0;
+        color: #003081; ;
+      }
+
+      .titulo-lembrete {
+        background: #ffffff !important;
+        color: #003081 !important;
+      }
+
+      label {
+        color: #003081;
+        font-size: 14px;
+        margin-top: 12px;
+      }
+
+      .resultado {
+        color:  #003081;
+        font-size: 18px;
+        margin-top: 15px;
+      }
+
+      .copos {
+        color: #003081;
+        font-size: 16px;
+        margin-top: 12px;
+      }
+
+      .motivacao {
+        color: #003081;
+        font-size: 16px;
+        margin-top: 15px;
+      }
+
+      .dicas, .importancia, .cadastro-email, .meta-section {
+        background: #f5f9ff;
+        color:  #003081;
+        padding: 14px 15px;
+        margin-top: 12px;
+        border-radius: 12px;
+      }
+
+      .dicas h2, .importancia h2, .cadastro-email h3 {
+        color:  #003081;
+      }
+
+      .meta-section {
+        background: #ffffff;
+        color: #003081;
+      }
+
+      .meta-section h2 {
+        color:  #003081;
+      }
+
+      .sobre-nos {
+        background: #f5f9ff !important;
+        color: #003081; !important;
+      }
+
+      .sobre-nos h2 {
+        color: #003081;
+      }
+
+      .sobre-nos p {
+        color:  #003081;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      ul {
+        padding-left: 16px;
+        margin: 8px 0 0 0;
+      }
+
+      li {
+        margin-bottom: 8px;
+        font-size: 14px;
+        line-height: 1.5;
+        color:  #003081;
+      }
+
+      .nav-buttons {
+        /* subir ainda mais nos celulares pequenos */
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 4px;
+        padding: 4px;
+        background: rgba(255,255,255,0.95);
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 95%;
+        max-width: 100%;
+        z-index: 100;
+      }
+
+      .nav-buttons button {
+        width: auto;
+        padding: 6px 8px;
+        font-size: 11px;
+        border-radius: 6px;
+        border: 1.5px solid #003081;
+      }
+
+      .nav-buttons button:hover {
+        background: #003081;
+        color: white;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 12px 14px;
+        margin-top: 8px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+
+      button, .btn-primary, button[type="submit"] {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+        margin-top: 12px;
+        border-radius: 10px;
+      }
+
+      .barra {
+        height: 28px;
+        margin-top: 15px;
+      }
+
+      .progresso {
+        line-height: 28px;
+        font-size: 12px;
+      }
+
+      #sobre {
+        font-size: 14px;
+      }
+
+      input[type="email"], input[type="number"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      /* Garante boa legibilidade no mobile */
+      #emailMessage {
+        font-size: 13px !important;
+        margin-top: 12px !important;
+        color: #000000 !important;
+      }
+    }
+
+    /* RESPONSIVIDADE PARA CELULARES MUITO PEQUENOS (até 360px) */
+    @media (max-width: 360px) {
+
+      .container {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        color: #000000;
+      }
+
+      h1, h2, h3 {
+        font-size: 16px;
+        color: #000000;
+      }
+
+      .nav-buttons {
+        top: -20px; /* subir mais para não cobrir a imagem */
+      }
+
+      .nav-buttons button {
+        padding: 5px 7px;
+        font-size: 10px;
+      }
+
+      input, select, button {
+        font-size: 15px;
+      }
+
+      label {
+        font-size: 13px;
+        color: #000000;
+      }
+
+      ul {
+        padding-left: 14px;
+      }
+
+      li {
+        font-size: 13px;
+        margin-bottom: 6px;
+        color: #000000;
+      }
+
+      .resultado, .copos, .motivacao {
+        font-size: 15px;
+        color: #000000;
+      }
+    }
+
+  
+
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/index.min.js"></script>
+  <script>
+    if(window.emailjs){ emailjs.init({publicKey:'Z7ml7m6Xm3SEcLVHm'}); }
+  </script>
+</head>
+
+<body>
+
+  <div class="topo-imagem">
+    <img src="cabe3.png" alt="Imagem do aplicativo">
+    <div class="nav-buttons">
+      <button type="button" onclick="navigateTo('top')">Início</button>
+      <button type="button" onclick="navigateTo('sobre')">Sobre Nós</button>
+      <button type="button" onclick="navigateTo('dicas')">Dicas</button>
+      <button type="button" onclick="navigateTo('importancia')">Ações</button>
+      <button type="button" onclick="navigateTo('contato')">Contato</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h2 class="titulo-lembrete">💧 Lembrete de Água</h2>
+
+   
+    <div id="sobre" class="sobre-nos" style="margin-top:10px; text-align:left; background:#f5f9ff; padding:15px; border-radius:15px;">
+      <h2>ℹ️ Sobre Nós</h2>
+      <p>Somos um site para ajudar você a lembrar de beber água diariamente e ensinar como fazer um bom uso da água.</p>
+    </div>
+
+    <!-- DICAS -->
+    <div id="dicas" class="dicas">
+
+      <h2>🔹 Dicas para beber mais água</h2>
+
+      <ul>
+        <li>Leve uma garrafinha para todos os lugares</li>
+        <li>Beba água logo ao acordar</li>
+        <li>Use alarmes durante o dia</li>
+        <li>Adicione limão ou hortelã para dar sabor</li>
+        <li>Beba água antes das refeições</li>
+      </ul>
+
+    </div>
+
+    <!-- IMPORTÂNCIA -->
+    <div id="importancia" class="importancia">
+
+      <h2>🌍 Principais Ações de Economia</h2>
+
+      <ul>
+        <li>Banho rápido: limite o tempo no chuveiro a 5 minutos.</li>
+        <li>Registro fechado: desligue a água ao se ensaboar.</li>
+        <li>Torneira fechada: não deixe a água correr ao escovar os dentes.</li>
+        <li>Descarga consciente: use apenas o necessário e evite jogar lixo no vaso.</li>
+        <li>Enxágue coletivo: ensaboe toda a louça antes de abrir a torneira.</li>
+        <li>Acúmulo de roupas: espere juntar muitas peças para ligar a máquina.</li>
+        <li>Reuso de água: use o descarte da máquina para lavar o chão.</li>
+      </ul>
+
+      <button type="button" class="btn-primary" onclick="toggleMeta()">
+        Cálculo
+      </button>
+
+    </div>
+
+    <section id="meta" class="meta-section">
+      <h2>📊 Cálculo diário</h2>
+
+      <label for="peso">
+        Digite seu peso
+      </label>
+      <input type="number" id="peso" placeholder="Ex: 70" />
+
+      <label for="unidade">
+        Escolha a unidade do peso
+      </label>
+      <select id="unidade">
+        <option value="kg">Quilogramas (kg)</option>
+        <option value="lb">Libras (lb)</option>
+      </select>
+
+      <button type="button" class="btn-primary" onclick="calcularAgua()">
+        Calcular Meta 💧
+      </button>
+
+      <div class="resultado" id="resultado"></div>
+
+      <div class="barra">
+        <div class="progresso" id="progresso">0%</div>
+      </div>
+
+      <div class="copos">
+        🥤 Copos tomados: <span id="copos">0</span>
+      </div>
+
+      <div class="copos">
+        💧 Água bebida: <span id="agua">0</span> ml
+      </div>
+
+      <button type="button" class="btn-primary" onclick="beberAgua()">
+        +200ml 💧
+      </button>
+
+      <div class="motivacao" id="motivacao"></div>
+    </section>
+
+    <!-- FORMULÁRIO DE CADASTRO DE EMAIL -->
+    <div id="contato" class="cadastro-email">
+      <h3>📩 Receba notificações</h3>
+      <form id="emailForm" onsubmit="return sendEmail(event)">
+        <label for="email">Seu melhor e-mail:</label>
+        <input type="email" name="email" id="email" placeholder="seuemail@email.com" required />
+        <button type="submit">Cadastrar</button>
+        <div id="emailMessage" style="margin-top:14px; color:#004085; font-weight:700;"></div>
+      </form>
+    </div>
+
+  </div>
+  <script>
+
+    let metaAgua = 0;
+    let aguaTomada = 0;
+    let copos = 0;
+
+    function navigateTo(id){
+      const el = (id === 'top') ? document.querySelector('.topo-imagem') : document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block: 'start'});
+    }
+
+    function toggleMeta(){
+      const metaSection = document.getElementById('meta');
+      const button = document.querySelector('#importancia button');
+      const hidden = window.getComputedStyle(metaSection).display === 'none';
+      if(hidden){
+        metaSection.style.display = 'block';
+        button.textContent = 'Ocultar cálculo';
+        metaSection.scrollIntoView({behavior:'smooth', block:'start'});
+      } else {
+        metaSection.style.display = 'none';
+        button.textContent = 'Cálculo';
+      }
+    }
+
+    function sendEmail(event){
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const messageEl = document.getElementById('emailMessage');
+      
+      if(!email){
+        messageEl.textContent = '❌ Por favor, digite um e-mail válido.';
+        messageEl.style.color = '#dc3545';
+        return false;
+      }
+      
+      localStorage.setItem('reminderEmail', email);
+      messageEl.textContent = 'Enviando e-mail...';
+      messageEl.style.color = '#0066cc';
+      
+      const templateParams ={
+    to_email: email,
+    user_email: email,
+    subject: "Confirmação de Cadastro - Lembrete de Água",
+    message: `Olá!
+
+Você se cadastrou com sucesso para receber notificações de água!
+
+Você receberá lembretes a cada 2 horas entre 8h e 20h.
+
+Mantenha-se hidratado!
+
+Atenciosamente,
+Equipe Lembrete de Água`
+};
+      
+      emailjs.send('service_d95tfur', 'template_7h8b2jk', templateParams)
+        .then((response) => {
+          console.log('Email enviado com sucesso!', response);
+          messageEl.textContent = `✅ Cadastro realizado com sucesso! Verifique seu e-mail.`;
+          messageEl.style.color = '#28a745';
+          document.getElementById('emailForm').reset();
+          startReminderNotifications(email);
+        })
+        .catch((error) => {
+          console.error('Erro ao enviar email:', error);
+          messageEl.textContent = `⚠️ Cadastro salvo! Lembretes ativos no navegador.`;
+          messageEl.style.color = '#ff9800';
+          document.getElementById('emailForm').reset();
+          startReminderNotifications(email);
+        });
+      
+      return false;
+    }
+
+    function startReminderNotifications(email){
+      if('Notification' in window && Notification.permission !== 'granted'){
+        Notification.requestPermission();
+      }
+      
+      const scheduleReminders = setInterval(() => {
+        const hour = new Date().getHours();
+        if(hour >= 8 && hour < 20){
+          showNotification(`💧 Hora de beber água! (${new Date().toLocaleTimeString('pt-BR', {hour:'2-digit', minute:'2-digit'})})`);
+        }
+      }, 7200000);
+      
+      localStorage.setItem('reminderInterval', scheduleReminders);
+    }
+
+    function showNotification(message){
+      if(!('Notification' in window)){
+        return;
+      }
+      if(Notification.permission === 'granted'){
+        new Notification('💧 Lembrete de Água', {
+          body: message,
+          icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23003081"/><path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70[...]
+        });
+      }
+    }
+
+    // CALCULAR META
+
+    function calcularAgua(){
+
+      let peso =
+        parseFloat(document.getElementById("peso").value);
+
+      const unidade =
+        document.getElementById("unidade").value;
+
+      if(isNaN(peso)){
+
+        alert("Digite seu peso!");
+        return;
+      }
+
+      // CONVERTER LIBRAS PARA KG
+
+      if(unidade === "lb"){
+
+        peso = peso * 0.453592;
+      }
+
+      metaAgua = Math.floor(peso * 35);
+
+      document.getElementById("resultado").innerHTML =
+        `Meta diária: ${metaAgua} ml`;
+
+    }
+
+    // ADICIONAR ÁGUA
+
+    function beberAgua(){
+
+      if(metaAgua === 0){
+
+        alert("Calcule sua meta primeiro!");
+        return;
+      }
+
+      aguaTomada += 200;
+      copos++;
+
+      document.getElementById("copos").innerText =
+        copos;
+
+      document.getElementById("agua").innerText =
+        aguaTomada;
+
+      let porcentagem =
+        (aguaTomada / metaAgua) * 100;
+
+      if(porcentagem > 100){
+
+        porcentagem = 100;
+      }
+
+      document.getElementById("progresso").style.width =
+        porcentagem + "%";
+
+      document.getElementById("progresso").innerText =
+        Math.floor(porcentagem) + "%";
+
+      // MOTIVAÇÃO
+
+      if(porcentagem >= 100){
+
+        document.getElementById("motivacao").innerHTML =
+          "🎉 Parabéns! Você atingiu sua meta diária!";
+
+      }
+
+      else if(porcentagem >= 50){
+
+        document.getElementById("motivacao").innerHTML =
+          "🔥 Você já está na metade da meta!";
+
+      }
+
+      else{
+
+        document.getElementById("motivacao").innerHTML =
+          "💪 Continue bebendo água!";
+      }
+
+    }
+
+    // NOTIFICAÇÕES
+
+    if(Notification.permission !== "granted"){
+
+      Notification.requestPermission();
+    }
+
+    setInterval(() => {
+
+      if(Notification.permission === "granted"){
+
+        new Notification(
+          "💧 Hora de beber água!"
+        );
+      } 
+
+
+    }, 3600000);
+
+  </script>
+
+       
+</body>
+
+</html>
